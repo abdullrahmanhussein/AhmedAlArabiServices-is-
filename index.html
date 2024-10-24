@@ -1,116 +1,134 @@
-<html><head><base href="https://arabi-web-network.net">
+<html><head><base href="https://arabiweb.net/vpn">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ArabiWebNetwork - Advanced Router Management</title>
+<title>ArabiWeb VPN - Secure Global Connection</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 <style>
 :root {
-  --primary: #0d47a1;
-  --secondary: #1565c0;
-  --accent: #1976d2;
+  --primary: #1565c0;
+  --secondary: #0d47a1;
   --success: #2e7d32;
   --danger: #c62828;
   --warning: #f57f17;
-  --text-dark: #212121;
+  --background: #f5f5f5;
+  --card-bg: #ffffff;
+  --text: #212121;
   --text-light: #ffffff;
   --border: #e0e0e0;
-  --bg-light: #f5f5f5;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
 body {
-  background: var(--bg-light);
-  color: var(--text-dark);
+  background: var(--background);
+  color: var(--text);
 }
 
 .navbar {
   background: var(--primary);
   color: var(--text-light);
   padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-.navbar-brand {
+.navbar-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
   font-size: 1.5rem;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .container {
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: 250px 1fr;
-  gap: 2rem;
-}
-
-.sidebar {
-  background: white;
-  border-radius: 8px;
-  padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.menu-item {
-  display: flex;
-  align-items: center;
-  padding: 0.75rem 1rem;
-  color: var(--text-dark);
-  text-decoration: none;
-  border-radius: 4px;
-  margin-bottom: 0.5rem;
-  transition: all 0.3s ease;
-}
-
-.menu-item:hover {
-  background: var(--primary);
+.hero {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: var(--text-light);
+  padding: 4rem 2rem;
+  text-align: center;
+  border-radius: 12px;
+  margin-bottom: 2rem;
 }
 
-.menu-item i {
-  margin-right: 0.75rem;
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
 
-.main-content {
-  background: white;
-  border-radius: 8px;
-  padding: 2rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+.hero p {
+  font-size: 1.2rem;
+  opacity: 0.9;
 }
 
 .card {
-  background: white;
+  background: var(--card-bg);
   border-radius: 8px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.form-group {
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.server-card {
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.server-card:hover {
+  transform: translateY(-5px);
+}
+
+.server-card .flag {
+  font-size: 2rem;
   margin-bottom: 1rem;
 }
 
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
+.server-status {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
 }
 
-.form-control {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  font-size: 1rem;
+.status-online {
+  background: var(--success);
+  box-shadow: 0 0 8px var(--success);
+}
+
+.status-offline {
+  background: var(--danger);
 }
 
 .btn {
@@ -120,6 +138,9 @@ body {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .btn-primary {
@@ -127,278 +148,281 @@ body {
   color: var(--text-light);
 }
 
-.btn-danger {
-  background: var(--danger);
-  color: var(--text-light);
+.btn-primary:hover {
+  background: var(--secondary);
 }
 
-.table {
-  width: 100%;
-  border-collapse: collapse;
+.stats-container {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  margin: 2rem 0;
 }
 
-.table th,
-.table td {
+.stat-item {
   padding: 1rem;
-  text-align: left;
-  border-bottom: 1px solid var(--border);
 }
 
-.table th {
-  background: var(--bg-light);
-  font-weight: 600;
+.stat-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--primary);
 }
 
-.status-badge {
-  padding: 0.25rem 0.75rem;
-  border-radius: 50px;
-  font-size: 0.875rem;
-  font-weight: 500;
+.stat-label {
+  font-size: 0.9rem;
+  opacity: 0.8;
 }
 
-.status-active {
-  background: #e8f5e9;
-  color: var(--success);
+.features {
+  margin: 3rem 0;
 }
 
-.status-inactive {
-  background: #ffebee;
-  color: var(--danger);
+.feature-card {
+  padding: 1.5rem;
+  text-align: center;
 }
 
-.chart-container {
-  height: 300px;
-  margin: 1.5rem 0;
+.feature-icon {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
 }
 
+.speed-meter {
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 0.5rem 0;
+}
+
+.speed-bar {
+  height: 100%;
+  background: var(--primary);
+  width: 0%;
+  transition: width 0.5s ease;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.connect-btn {
+  animation: pulse 2s infinite;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
 </style>
 </head>
 <body>
 
 <nav class="navbar">
-  <div class="container">
-    <div class="navbar-brand">ArabiWebNetwork</div>
+  <div class="navbar-content">
+    <div class="logo">
+      <i class="fas fa-shield-alt"></i>
+      ArabiWeb VPN
+    </div>
+    <div>
+      <a href="tel:+201276795187" style="color: white; text-decoration: none;">
+        <i class="fas fa-headset"></i> Support
+      </a>
+    </div>
   </div>
 </nav>
 
 <div class="container">
-  <div class="grid">
-    <div class="sidebar">
-      <a href="#dashboard" class="menu-item">
-        <i class="fas fa-tachometer-alt"></i>
-        Dashboard
-      </a>
-      <a href="#wireless" class="menu-item">
-        <i class="fas fa-wifi"></i>
-        Wireless Settings
-      </a>
-      <a href="#security" class="menu-item">
-        <i class="fas fa-shield-alt"></i>
-        Security
-      </a>
-      <a href="#clients" class="menu-item">
-        <i class="fas fa-users"></i>
-        Connected Clients
-      </a>
-      <a href="#bandwidth" class="menu-item">
-        <i class="fas fa-chart-line"></i>
-        Bandwidth Control
-      </a>
-      <a href="#firewall" class="menu-item">
-        <i class="fas fa-fire"></i>
-        Firewall
-      </a>
-      <a href="#vpn" class="menu-item">
-        <i class="fas fa-lock"></i>
-        VPN Settings
-      </a>
-      <a href="#system" class="menu-item">
-        <i class="fas fa-cogs"></i>
-        System Settings
-      </a>
+  <div class="hero">
+    <h1>Secure & Fast VPN Service</h1>
+    <p>Connect securely to servers worldwide with military-grade encryption</p>
+    <button class="btn btn-primary connect-btn" style="margin-top: 2rem;" onclick="toggleConnection()">
+      <i class="fas fa-power-off"></i>
+      <span id="connect-text">Connect</span>
+    </button>
+  </div>
+
+  <div class="stats-container">
+    <div class="stat-item">
+      <div class="stat-value" id="active-users">2,547</div>
+      <div class="stat-label">Active Users</div>
     </div>
+    <div class="stat-item">
+      <div class="stat-value">50+</div>
+      <div class="stat-label">Server Locations</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value">Unlimited</div>
+      <div class="stat-label">Bandwidth</div>
+    </div>
+  </div>
 
-    <div class="main-content">
-      <div class="card">
-        <h2><i class="fas fa-info-circle"></i> System Status</h2>
-        <div class="form-group">
-          <label>Router Model:</label>
-          <span>ArabiWebNetwork Pro Router</span>
-        </div>
-        <div class="form-group">
-          <label>Firmware Version:</label>
-          <span>2.4.6</span>
-        </div>
-        <div class="form-group">
-          <label>WAN IP:</label>
-          <span>192.168.1.1</span>
-        </div>
-        <div class="form-group">
-          <label>System Uptime:</label>
-          <span id="uptime">10 days, 4 hours, 23 minutes</span>
-        </div>
+  <div class="card">
+    <h2><i class="fas fa-server"></i> Select Server Location</h2>
+    <div class="grid" id="server-grid">
+      <!-- Servers will be populated by JavaScript -->
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><i class="fas fa-tachometer-alt"></i> Connection Speed</h2>
+    <div style="margin: 2rem 0;">
+      <p>Download Speed</p>
+      <div class="speed-meter">
+        <div class="speed-bar" id="download-speed"></div>
       </div>
+      <p style="text-align: right;" id="download-speed-text">0 Mbps</p>
 
-      <div class="card">
-        <h2><i class="fas fa-wifi"></i> Wireless Networks</h2>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>SSID</th>
-              <th>Security</th>
-              <th>Channel</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>ArabiWeb_2.4G</td>
-              <td>WPA3</td>
-              <td>6</td>
-              <td><span class="status-badge status-active">Active</span></td>
-              <td>
-                <button class="btn btn-primary" onclick="editNetwork('2.4G')">Edit</button>
-              </td>
-            </tr>
-            <tr>
-              <td>ArabiWeb_5G</td>
-              <td>WPA3</td>
-              <td>36</td>
-              <td><span class="status-badge status-active">Active</span></td>
-              <td>
-                <button class="btn btn-primary" onclick="editNetwork('5G')">Edit</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <p>Upload Speed</p>
+      <div class="speed-meter">
+        <div class="speed-bar" id="upload-speed"></div>
       </div>
+      <p style="text-align: right;" id="upload-speed-text">0 Mbps</p>
+    </div>
+  </div>
 
-      <div class="card">
-        <h2><i class="fas fa-users"></i> Connected Clients</h2>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Device Name</th>
-              <th>IP Address</th>
-              <th>MAC Address</th>
-              <th>Connection Type</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody id="clientsList">
-            <!-- Dynamically populated -->
-          </tbody>
-        </table>
+  <div class="features">
+    <div class="grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-lock"></i>
+        </div>
+        <h3>Military-Grade Encryption</h3>
+        <p>Your data is protected with AES-256 encryption</p>
       </div>
-
-      <div class="card">
-        <h2><i class="fas fa-chart-line"></i> Network Usage</h2>
-        <div class="chart-container" id="networkChart"></div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-ban"></i>
+        </div>
+        <h3>No Logs Policy</h3>
+        <p>We never track or store your online activities</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-bolt"></i>
+        </div>
+        <h3>Lightning Fast</h3>
+        <p>High-speed servers optimized for streaming</p>
       </div>
     </div>
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-// Initialize connected clients
-const clients = [
-  {
-    name: 'iPhone 13',
-    ip: '192.168.1.100',
-    mac: '00:11:22:33:44:55',
-    type: 'Wireless 5G'
-  },
-  {
-    name: 'Samsung TV',
-    ip: '192.168.1.101',
-    mac: '11:22:33:44:55:66',
-    type: 'Wireless 2.4G'
-  },
-  {
-    name: 'Desktop PC',
-    ip: '192.168.1.102',
-    mac: '22:33:44:55:66:77',
-    type: 'Ethernet'
-  }
+const servers = [
+  { country: 'United States', flag: '🇺🇸', ping: 45, online: true },
+  { country: 'United Kingdom', flag: '🇬🇧', ping: 60, online: true },
+  { country: 'Germany', flag: '🇩🇪', ping: 55, online: true },
+  { country: 'Japan', flag: '🇯🇵', ping: 85, online: true },
+  { country: 'Singapore', flag: '🇸🇬', ping: 90, online: true },
+  { country: 'Australia', flag: '🇦🇺', ping: 95, online: true },
+  { country: 'Canada', flag: '🇨🇦', ping: 50, online: true },
+  { country: 'France', flag: '🇫🇷', ping: 65, online: true },
+  { country: 'Netherlands', flag: '🇳🇱', ping: 58, online: true },
+  { country: 'South Korea', flag: '🇰🇷', ping: 88, online: true },
+  { country: 'India', flag: '🇮🇳', ping: 100, online: true },
+  { country: 'Brazil', flag: '🇧🇷', ping: 110, online: true }
 ];
 
-function updateClientsList() {
-  const clientsList = document.getElementById('clientsList');
-  clientsList.innerHTML = '';
-  
-  clients.forEach(client => {
-    const row = document.createElement('tr');
-    row.innerHTML = `
-      <td>${client.name}</td>
-      <td>${client.ip}</td>
-      <td>${client.mac}</td>
-      <td>${client.type}</td>
-      <td>
-        <button class="btn btn-danger" onclick="blockClient('${client.mac}')">Block</button>
-      </td>
-    `;
-    clientsList.appendChild(row);
+let isConnected = false;
+let selectedServer = null;
+
+function populateServers() {
+  const grid = document.getElementById('server-grid');
+  grid.innerHTML = servers.map((server, index) => `
+    <div class="server-card" onclick="selectServer(${index})">
+      <div class="server-status ${server.online ? 'status-online' : 'status-offline'}"></div>
+      <div class="flag">${server.flag}</div>
+      <h3>${server.country}</h3>
+      <p>Ping: ${server.ping}ms</p>
+    </div>
+  `).join('');
+}
+
+function selectServer(index) {
+  selectedServer = servers[index];
+  document.querySelectorAll('.server-card').forEach((card, i) => {
+    card.style.border = i === index ? '2px solid var(--primary)' : 'none';
   });
 }
 
-function blockClient(mac) {
-  if(confirm(`Are you sure you want to block device with MAC: ${mac}?`)) {
-    alert(`Device ${mac} has been blocked`);
+function toggleConnection() {
+  if (!selectedServer) {
+    alert('Please select a server first');
+    return;
+  }
+
+  isConnected = !isConnected;
+  const connectBtn = document.querySelector('.connect-btn');
+  const connectText = document.getElementById('connect-text');
+
+  if (isConnected) {
+    connectBtn.style.background = 'var(--danger)';
+    connectText.textContent = 'Disconnect';
+    simulateConnection();
+  } else {
+    connectBtn.style.background = 'var(--primary)';
+    connectText.textContent = 'Connect';
+    resetConnection();
   }
 }
 
-function editNetwork(band) {
-  // Implement network editing functionality
-  alert(`Editing ${band} network settings`);
+function simulateConnection() {
+  const downloadBar = document.getElementById('download-speed');
+  const uploadBar = document.getElementById('upload-speed');
+  const downloadText = document.getElementById('download-speed-text');
+  const uploadText = document.getElementById('upload-speed-text');
+
+  function updateSpeeds() {
+    if (!isConnected) return;
+    
+    const downloadSpeed = Math.floor(Math.random() * 100) + 50;
+    const uploadSpeed = Math.floor(Math.random() * 50) + 25;
+    
+    downloadBar.style.width = `${downloadSpeed}%`;
+    uploadBar.style.width = `${uploadSpeed}%`;
+    downloadText.textContent = `${downloadSpeed} Mbps`;
+    uploadText.textContent = `${uploadSpeed} Mbps`;
+  }
+
+  updateSpeeds();
+  setInterval(updateSpeeds, 2000);
 }
 
-// Initialize Network Usage Chart
-const ctx = document.getElementById('networkChart').getContext('2d');
-new Chart(ctx, {
-  type: 'line',
-  data: {
-    labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00'],
-    datasets: [{
-      label: 'Download (Mbps)',
-      data: [65, 59, 80, 81, 56, 55],
-      borderColor: var(--primary),
-      tension: 0.4
-    }, {
-      label: 'Upload (Mbps)',
-      data: [28, 48, 40, 19, 86, 27],
-      borderColor: var(--secondary),
-      tension: 0.4
-    }]
-  },
-  options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
-  }
-});
+function resetConnection() {
+  const downloadBar = document.getElementById('download-speed');
+  const uploadBar = document.getElementById('upload-speed');
+  const downloadText = document.getElementById('download-speed-text');
+  const uploadText = document.getElementById('upload-speed-text');
 
-// Update uptime counter
-function updateUptime() {
-  let seconds = 0;
+  downloadBar.style.width = '0%';
+  uploadBar.style.width = '0%';
+  downloadText.textContent = '0 Mbps';
+  uploadText.textContent = '0 Mbps';
+}
+
+// Simulate active users count
+function updateActiveUsers() {
+  const activeUsers = document.getElementById('active-users');
   setInterval(() => {
-    seconds++;
-    const days = Math.floor(seconds / (24 * 3600));
-    const hours = Math.floor((seconds % (24 * 3600)) / 3600);
-    const minutes = Math.floor((seconds % 3600) / 60);
-    document.getElementById('uptime').textContent = 
-      `${days} days, ${hours} hours, ${minutes} minutes`;
-  }, 60000);
+    const count = Math.floor(Math.random() * 1000) + 2000;
+    activeUsers.textContent = count.toLocaleString();
+  }, 5000);
 }
 
 // Initialize
-updateClientsList();
-updateUptime();
+populateServers();
+updateActiveUsers();
 </script>
 
 </body></html>
