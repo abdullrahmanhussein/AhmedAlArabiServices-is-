@@ -1,295 +1,404 @@
-<html><head><base href="https://t.me/AhmedAlArabi3">
+<html><head><base href="https://arabi-web-network.net">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AhmedAlArabi App Store</title>
+<title>ArabiWebNetwork - Advanced Router Management</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-  }
+:root {
+  --primary: #0d47a1;
+  --secondary: #1565c0;
+  --accent: #1976d2;
+  --success: #2e7d32;
+  --danger: #c62828;
+  --warning: #f57f17;
+  --text-dark: #212121;
+  --text-light: #ffffff;
+  --border: #e0e0e0;
+  --bg-light: #f5f5f5;
+}
 
-  body {
-    background: #f5f5f5;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-  .header {
-    background: #1a73e8;
-    padding: 15px 20px;
-    color: white;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
+body {
+  background: var(--bg-light);
+  color: var(--text-dark);
+}
 
-  .search-bar {
-    display: flex;
-    align-items: center;
-    max-width: 700px;
-    margin: 10px auto;
-    background: white;
-    border-radius: 24px;
-    padding: 8px 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  }
+.navbar {
+  background: var(--primary);
+  color: var(--text-light);
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
 
-  .search-bar input {
-    width: 100%;
-    border: none;
-    outline: none;
-    padding: 8px;
-    font-size: 16px;
-  }
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
 
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
 
-  .category-tabs {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    padding: 10px 0;
-    margin-bottom: 20px;
-  }
+.grid {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 2rem;
+}
 
-  .category-tab {
-    white-space: nowrap;
-    padding: 8px 16px;
-    border-radius: 20px;
-    background: white;
-    cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  }
+.sidebar {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
 
-  .category-tab:hover {
-    background: #e8f0fe;
-  }
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  color: var(--text-dark);
+  text-decoration: none;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
 
-  .category-tab.active {
-    background: #1a73e8;
-    color: white;
-  }
+.menu-item:hover {
+  background: var(--primary);
+  color: var(--text-light);
+}
 
-  .app-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-  }
+.menu-item i {
+  margin-right: 0.75rem;
+}
 
-  .app-card {
-    background: white;
-    border-radius: 12px;
-    padding: 15px;
-    transition: 0.3s;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  }
+.main-content {
+  background: white;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
 
-  .app-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  }
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
 
-  .app-icon {
-    width: 80px;
-    height: 80px;
-    border-radius: 20px;
-    margin-bottom: 10px;
-  }
+.form-group {
+  margin-bottom: 1rem;
+}
 
-  .app-info h3 {
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
 
-  .app-info p {
-    color: #666;
-    font-size: 14px;
-  }
+.form-control {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 1rem;
+}
 
-  .rating {
-    color: #ffd700;
-    margin: 5px 0;
-  }
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
 
-  .download-btn {
-    background: #1a73e8;
-    color: white;
-    padding: 8px 16px;
-    border-radius: 20px;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    margin-top: 10px;
-    transition: 0.3s;
-  }
+.btn-primary {
+  background: var(--primary);
+  color: var(--text-light);
+}
 
-  .download-btn:hover {
-    background: #1557b0;
-  }
+.btn-danger {
+  background: var(--danger);
+  color: var(--text-light);
+}
 
-  .telegram-link {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #0088cc;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 25px;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    z-index: 1000;
-  }
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
 
-  @media (max-width: 600px) {
-    .app-grid {
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    }
-  }
+.table th,
+.table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.table th {
+  background: var(--bg-light);
+  font-weight: 600;
+}
+
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.status-active {
+  background: #e8f5e9;
+  color: var(--success);
+}
+
+.status-inactive {
+  background: #ffebee;
+  color: var(--danger);
+}
+
+.chart-container {
+  height: 300px;
+  margin: 1.5rem 0;
+}
+
 </style>
 </head>
 <body>
-  <div class="header">
-    <h1>AhmedAlArabi App Store</h1>
-    <div class="search-bar">
-      <input type="text" placeholder="Search for apps & games...">
-    </div>
-  </div>
 
+<nav class="navbar">
   <div class="container">
-    <div class="category-tabs">
-      <div class="category-tab active">All</div>
-      <div class="category-tab">Games</div>
-      <div class="category-tab">Social</div>
-      <div class="category-tab">Productivity</div>
-      <div class="category-tab">Entertainment</div>
-      <div class="category-tab">Education</div>
-      <div class="category-tab">Tools</div>
+    <div class="navbar-brand">ArabiWebNetwork</div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="grid">
+    <div class="sidebar">
+      <a href="#dashboard" class="menu-item">
+        <i class="fas fa-tachometer-alt"></i>
+        Dashboard
+      </a>
+      <a href="#wireless" class="menu-item">
+        <i class="fas fa-wifi"></i>
+        Wireless Settings
+      </a>
+      <a href="#security" class="menu-item">
+        <i class="fas fa-shield-alt"></i>
+        Security
+      </a>
+      <a href="#clients" class="menu-item">
+        <i class="fas fa-users"></i>
+        Connected Clients
+      </a>
+      <a href="#bandwidth" class="menu-item">
+        <i class="fas fa-chart-line"></i>
+        Bandwidth Control
+      </a>
+      <a href="#firewall" class="menu-item">
+        <i class="fas fa-fire"></i>
+        Firewall
+      </a>
+      <a href="#vpn" class="menu-item">
+        <i class="fas fa-lock"></i>
+        VPN Settings
+      </a>
+      <a href="#system" class="menu-item">
+        <i class="fas fa-cogs"></i>
+        System Settings
+      </a>
     </div>
 
-    <div class="app-grid">
-      <!-- Social Media Apps -->
-      <div class="app-card">
-        <img class="app-icon" src="https://play-lh.googleusercontent.com/VRMWkE5p3CkWhJs6nv-9ZsLAs1QOg5ob1_3qg-rckwYW7yp1fMrYZqnEFpk0IoVP4LM=w240-h480-rw" alt="WhatsApp icon">
-        <div class="app-info">
-          <h3>WhatsApp Messenger</h3>
-          <p>Meta</p>
-          <div class="rating">★★★★★</div>
-          <button class="download-btn">Install</button>
+    <div class="main-content">
+      <div class="card">
+        <h2><i class="fas fa-info-circle"></i> System Status</h2>
+        <div class="form-group">
+          <label>Router Model:</label>
+          <span>ArabiWebNetwork Pro Router</span>
+        </div>
+        <div class="form-group">
+          <label>Firmware Version:</label>
+          <span>2.4.6</span>
+        </div>
+        <div class="form-group">
+          <label>WAN IP:</label>
+          <span>192.168.1.1</span>
+        </div>
+        <div class="form-group">
+          <label>System Uptime:</label>
+          <span id="uptime">10 days, 4 hours, 23 minutes</span>
         </div>
       </div>
 
-      <div class="app-card">
-        <img class="app-icon" src="https://play-lh.googleusercontent.com/KxeSAjPTKliCErbivNiXrd6cTwfbqUJcbSRPe_IBVK_YmwckfMRS1VIHz-8BlpWprx8=w240-h480-rw" alt="Instagram icon">
-        <div class="app-info">
-          <h3>Instagram</h3>
-          <p>Meta</p>
-          <div class="rating">★★★★☆</div>
-          <button class="download-btn">Install</button>
-        </div>
+      <div class="card">
+        <h2><i class="fas fa-wifi"></i> Wireless Networks</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>SSID</th>
+              <th>Security</th>
+              <th>Channel</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ArabiWeb_2.4G</td>
+              <td>WPA3</td>
+              <td>6</td>
+              <td><span class="status-badge status-active">Active</span></td>
+              <td>
+                <button class="btn btn-primary" onclick="editNetwork('2.4G')">Edit</button>
+              </td>
+            </tr>
+            <tr>
+              <td>ArabiWeb_5G</td>
+              <td>WPA3</td>
+              <td>36</td>
+              <td><span class="status-badge status-active">Active</span></td>
+              <td>
+                <button class="btn btn-primary" onclick="editNetwork('5G')">Edit</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
-      <!-- Games -->
-      <div class="app-card">
-        <img class="app-icon" src="https://play-lh.googleusercontent.com/JRd05pyBH41qjgsJuWduRJpDeZG0Hnb0yjf2nWqO7VaGKL10-G5UIygxED-WNOc3pg=w240-h480-rw" alt="PUBG Mobile icon">
-        <div class="app-info">
-          <h3>PUBG MOBILE</h3>
-          <p>Tencent Games</p>
-          <div class="rating">★★★★★</div>
-          <button class="download-btn">Install</button>
-        </div>
+      <div class="card">
+        <h2><i class="fas fa-users"></i> Connected Clients</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Device Name</th>
+              <th>IP Address</th>
+              <th>MAC Address</th>
+              <th>Connection Type</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="clientsList">
+            <!-- Dynamically populated -->
+          </tbody>
+        </table>
       </div>
 
-      <!-- Productivity Apps -->
-      <div class="app-card">
-        <img class="app-icon" src="https://play-lh.googleusercontent.com/1nfAdJs2Ep0qvq2SO82u1g1GZF-Hm1ly8ty_MUmYWJFjlN8jZWYGz1HCwjTDsFz6FM0=w240-h480-rw" alt="Microsoft Office icon">
-        <div class="app-info">
-          <h3>Microsoft Office</h3>
-          <p>Microsoft Corporation</p>
-          <div class="rating">★★★★★</div>
-          <button class="download-btn">Install</button>
-        </div>
+      <div class="card">
+        <h2><i class="fas fa-chart-line"></i> Network Usage</h2>
+        <div class="chart-container" id="networkChart"></div>
       </div>
-
-      <!-- Entertainment Apps -->
-      <div class="app-card">
-        <img class="app-icon" src="https://play-lh.googleusercontent.com/TBRwjS_qfJCSj1m7zZB93FnpJM5fSpMA_wUlFDLxWAb45T9RmwBvQd5cWR5viJJOhkI=w240-h480-rw" alt="Netflix icon">
-        <div class="app-info">
-          <h3>Netflix</h3>
-          <p>Netflix, Inc.</p>
-          <div class="rating">★★★★★</div>
-          <button class="download-btn">Install</button>
-        </div>
-      </div>
-
-      <!-- Education Apps -->
-      <div class="app-card">
-        <img class="app-icon" src="https://play-lh.googleusercontent.com/RSW-U9L9e7eyxGJEtVqYOYhMy3d0PVLHfAkd5RbRnmFEDTOBjLmxaNsr1Lm78ZvVLw=w240-h480-rw" alt="Duolingo icon">
-        <div class="app-info">
-          <h3>Duolingo</h3>
-          <p>Language Learning</p>
-          <div class="rating">★★★★★</div>
-          <button class="download-btn">Install</button>
-        </div>
-      </div>
-
-      <!-- Add more app cards as needed -->
-
     </div>
   </div>
+</div>
 
-  <a href="https://t.me/AhmedAlArabi5" class="telegram-link" target="_blank">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.74 8.33c-.43 4.58-2.31 15.7-2.31 15.7s-.16.37-.67.39c-.51.02-.71-.38-.71-.38l-4.77-3.89-.03-.01c.18-.16.87-.77 2.04-1.89 1.22-1.16.71-1.73-.26-.99l-5.6 3.98s-.65.39-1.2.12c-.55-.27-.54-.79-.54-.79l1.35-8.28c.47-2.39 2.86-4.73 5.22-4.73 0 0 7.22-.03 7.48.05z"/>
-    </svg>
-    Contact Support
-  </a>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+// Initialize connected clients
+const clients = [
+  {
+    name: 'iPhone 13',
+    ip: '192.168.1.100',
+    mac: '00:11:22:33:44:55',
+    type: 'Wireless 5G'
+  },
+  {
+    name: 'Samsung TV',
+    ip: '192.168.1.101',
+    mac: '11:22:33:44:55:66',
+    type: 'Wireless 2.4G'
+  },
+  {
+    name: 'Desktop PC',
+    ip: '192.168.1.102',
+    mac: '22:33:44:55:66:77',
+    type: 'Ethernet'
+  }
+];
 
-  <script>
-    // Category tabs functionality
-    const tabs = document.querySelectorAll('.category-tab');
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-      });
-    });
+function updateClientsList() {
+  const clientsList = document.getElementById('clientsList');
+  clientsList.innerHTML = '';
+  
+  clients.forEach(client => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${client.name}</td>
+      <td>${client.ip}</td>
+      <td>${client.mac}</td>
+      <td>${client.type}</td>
+      <td>
+        <button class="btn btn-danger" onclick="blockClient('${client.mac}')">Block</button>
+      </td>
+    `;
+    clientsList.appendChild(row);
+  });
+}
 
-    // Search functionality
-    const searchInput = document.querySelector('.search-bar input');
-    const appCards = document.querySelectorAll('.app-card');
+function blockClient(mac) {
+  if(confirm(`Are you sure you want to block device with MAC: ${mac}?`)) {
+    alert(`Device ${mac} has been blocked`);
+  }
+}
 
-    searchInput.addEventListener('input', (e) => {
-      const searchTerm = e.target.value.toLowerCase();
-      appCards.forEach(card => {
-        const appName = card.querySelector('h3').textContent.toLowerCase();
-        const appDev = card.querySelector('p').textContent.toLowerCase();
-        if (appName.includes(searchTerm) || appDev.includes(searchTerm)) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    });
+function editNetwork(band) {
+  // Implement network editing functionality
+  alert(`Editing ${band} network settings`);
+}
 
-    // Install button functionality
-    const installButtons = document.querySelectorAll('.download-btn');
-    installButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const appName = button.parentElement.querySelector('h3').textContent;
-        button.textContent = 'Installing...';
-        setTimeout(() => {
-          button.textContent = 'Installed';
-          button.style.background = '#34a853';
-        }, 2000);
-      });
-    });
-  </script>
+// Initialize Network Usage Chart
+const ctx = document.getElementById('networkChart').getContext('2d');
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00'],
+    datasets: [{
+      label: 'Download (Mbps)',
+      data: [65, 59, 80, 81, 56, 55],
+      borderColor: var(--primary),
+      tension: 0.4
+    }, {
+      label: 'Upload (Mbps)',
+      data: [28, 48, 40, 19, 86, 27],
+      borderColor: var(--secondary),
+      tension: 0.4
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+
+// Update uptime counter
+function updateUptime() {
+  let seconds = 0;
+  setInterval(() => {
+    seconds++;
+    const days = Math.floor(seconds / (24 * 3600));
+    const hours = Math.floor((seconds % (24 * 3600)) / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    document.getElementById('uptime').textContent = 
+      `${days} days, ${hours} hours, ${minutes} minutes`;
+  }, 60000);
+}
+
+// Initialize
+updateClientsList();
+updateUptime();
+</script>
+
 </body></html>
