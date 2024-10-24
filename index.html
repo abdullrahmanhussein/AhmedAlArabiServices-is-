@@ -1,0 +1,295 @@
+<html><head><base href="https://t.me/AhmedAlArabi3">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AhmedAlArabi App Store</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  body {
+    background: #f5f5f5;
+  }
+
+  .header {
+    background: #1a73e8;
+    padding: 15px 20px;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .search-bar {
+    display: flex;
+    align-items: center;
+    max-width: 700px;
+    margin: 10px auto;
+    background: white;
+    border-radius: 24px;
+    padding: 8px 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  .search-bar input {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 8px;
+    font-size: 16px;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .category-tabs {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 10px 0;
+    margin-bottom: 20px;
+  }
+
+  .category-tab {
+    white-space: nowrap;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: white;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  .category-tab:hover {
+    background: #e8f0fe;
+  }
+
+  .category-tab.active {
+    background: #1a73e8;
+    color: white;
+  }
+
+  .app-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .app-card {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    transition: 0.3s;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  .app-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+
+  .app-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+
+  .app-info h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+
+  .app-info p {
+    color: #666;
+    font-size: 14px;
+  }
+
+  .rating {
+    color: #ffd700;
+    margin: 5px 0;
+  }
+
+  .download-btn {
+    background: #1a73e8;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    transition: 0.3s;
+  }
+
+  .download-btn:hover {
+    background: #1557b0;
+  }
+
+  .telegram-link {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #0088cc;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
+  }
+
+  @media (max-width: 600px) {
+    .app-grid {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="header">
+    <h1>AhmedAlArabi App Store</h1>
+    <div class="search-bar">
+      <input type="text" placeholder="Search for apps & games...">
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="category-tabs">
+      <div class="category-tab active">All</div>
+      <div class="category-tab">Games</div>
+      <div class="category-tab">Social</div>
+      <div class="category-tab">Productivity</div>
+      <div class="category-tab">Entertainment</div>
+      <div class="category-tab">Education</div>
+      <div class="category-tab">Tools</div>
+    </div>
+
+    <div class="app-grid">
+      <!-- Social Media Apps -->
+      <div class="app-card">
+        <img class="app-icon" src="https://play-lh.googleusercontent.com/VRMWkE5p3CkWhJs6nv-9ZsLAs1QOg5ob1_3qg-rckwYW7yp1fMrYZqnEFpk0IoVP4LM=w240-h480-rw" alt="WhatsApp icon">
+        <div class="app-info">
+          <h3>WhatsApp Messenger</h3>
+          <p>Meta</p>
+          <div class="rating">★★★★★</div>
+          <button class="download-btn">Install</button>
+        </div>
+      </div>
+
+      <div class="app-card">
+        <img class="app-icon" src="https://play-lh.googleusercontent.com/KxeSAjPTKliCErbivNiXrd6cTwfbqUJcbSRPe_IBVK_YmwckfMRS1VIHz-8BlpWprx8=w240-h480-rw" alt="Instagram icon">
+        <div class="app-info">
+          <h3>Instagram</h3>
+          <p>Meta</p>
+          <div class="rating">★★★★☆</div>
+          <button class="download-btn">Install</button>
+        </div>
+      </div>
+
+      <!-- Games -->
+      <div class="app-card">
+        <img class="app-icon" src="https://play-lh.googleusercontent.com/JRd05pyBH41qjgsJuWduRJpDeZG0Hnb0yjf2nWqO7VaGKL10-G5UIygxED-WNOc3pg=w240-h480-rw" alt="PUBG Mobile icon">
+        <div class="app-info">
+          <h3>PUBG MOBILE</h3>
+          <p>Tencent Games</p>
+          <div class="rating">★★★★★</div>
+          <button class="download-btn">Install</button>
+        </div>
+      </div>
+
+      <!-- Productivity Apps -->
+      <div class="app-card">
+        <img class="app-icon" src="https://play-lh.googleusercontent.com/1nfAdJs2Ep0qvq2SO82u1g1GZF-Hm1ly8ty_MUmYWJFjlN8jZWYGz1HCwjTDsFz6FM0=w240-h480-rw" alt="Microsoft Office icon">
+        <div class="app-info">
+          <h3>Microsoft Office</h3>
+          <p>Microsoft Corporation</p>
+          <div class="rating">★★★★★</div>
+          <button class="download-btn">Install</button>
+        </div>
+      </div>
+
+      <!-- Entertainment Apps -->
+      <div class="app-card">
+        <img class="app-icon" src="https://play-lh.googleusercontent.com/TBRwjS_qfJCSj1m7zZB93FnpJM5fSpMA_wUlFDLxWAb45T9RmwBvQd5cWR5viJJOhkI=w240-h480-rw" alt="Netflix icon">
+        <div class="app-info">
+          <h3>Netflix</h3>
+          <p>Netflix, Inc.</p>
+          <div class="rating">★★★★★</div>
+          <button class="download-btn">Install</button>
+        </div>
+      </div>
+
+      <!-- Education Apps -->
+      <div class="app-card">
+        <img class="app-icon" src="https://play-lh.googleusercontent.com/RSW-U9L9e7eyxGJEtVqYOYhMy3d0PVLHfAkd5RbRnmFEDTOBjLmxaNsr1Lm78ZvVLw=w240-h480-rw" alt="Duolingo icon">
+        <div class="app-info">
+          <h3>Duolingo</h3>
+          <p>Language Learning</p>
+          <div class="rating">★★★★★</div>
+          <button class="download-btn">Install</button>
+        </div>
+      </div>
+
+      <!-- Add more app cards as needed -->
+
+    </div>
+  </div>
+
+  <a href="https://t.me/AhmedAlArabi5" class="telegram-link" target="_blank">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.74 8.33c-.43 4.58-2.31 15.7-2.31 15.7s-.16.37-.67.39c-.51.02-.71-.38-.71-.38l-4.77-3.89-.03-.01c.18-.16.87-.77 2.04-1.89 1.22-1.16.71-1.73-.26-.99l-5.6 3.98s-.65.39-1.2.12c-.55-.27-.54-.79-.54-.79l1.35-8.28c.47-2.39 2.86-4.73 5.22-4.73 0 0 7.22-.03 7.48.05z"/>
+    </svg>
+    Contact Support
+  </a>
+
+  <script>
+    // Category tabs functionality
+    const tabs = document.querySelectorAll('.category-tab');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+      });
+    });
+
+    // Search functionality
+    const searchInput = document.querySelector('.search-bar input');
+    const appCards = document.querySelectorAll('.app-card');
+
+    searchInput.addEventListener('input', (e) => {
+      const searchTerm = e.target.value.toLowerCase();
+      appCards.forEach(card => {
+        const appName = card.querySelector('h3').textContent.toLowerCase();
+        const appDev = card.querySelector('p').textContent.toLowerCase();
+        if (appName.includes(searchTerm) || appDev.includes(searchTerm)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+
+    // Install button functionality
+    const installButtons = document.querySelectorAll('.download-btn');
+    installButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const appName = button.parentElement.querySelector('h3').textContent;
+        button.textContent = 'Installing...';
+        setTimeout(() => {
+          button.textContent = 'Installed';
+          button.style.background = '#34a853';
+        }, 2000);
+      });
+    });
+  </script>
+</body></html>
